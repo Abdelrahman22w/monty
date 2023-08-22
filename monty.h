@@ -57,6 +57,8 @@ typedef struct instruction_s
 void check_push(stack_t **head, unsigned int counter);
 void pall(stack_t **head);
 void pint(stack_t **head, unsigned int counter);
-
-
+void swap(stack_t **head, unsigned int counter);
+void pop(stack_t **head, unsigned int counter);
+void add(stack_t **head, unsigned int counter);
+void nop(stack_t **head, unsigned int counter);
 #endif
