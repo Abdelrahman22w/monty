@@ -7,15 +7,17 @@
 */
 void add(stack_t **head, unsigned int counter)
 {
+	int sum;
+	stack_t *temp;
+
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
 		goto cleanup;
 		return;
 	}
-
-	int sum = (*head)->n + (*head)->next->n;
-	stack_t *temp = (*head)->next;
+	sum = (*head)->n + (*head)->next->n;
+	temp = (*head)->next;
 
 	(*head)->next->n = sum;
 	(*head)->next = temp->next;

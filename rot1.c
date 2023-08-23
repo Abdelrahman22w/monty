@@ -18,6 +18,7 @@ void rotl(stack_t **head, unsigned int counter)
 	while (current->next)
 	{
 		int temp = current->n;
+
 		current->n = current->next->n;
 		current->next->n = temp;
 		current = current->next;

@@ -10,6 +10,7 @@ void swap(stack_t **head, unsigned int counter)
 {
 	stack_t *h = *head;
 	int len = 0;
+	stack_t *temp;
 
 	while (h)/* find the length of the stack */
 	{
@@ -25,7 +26,7 @@ void swap(stack_t **head, unsigned int counter)
 	/* swaps the top two elements of the stack */
 	h = *head;
 
-	stack_t *temp = h->next;
+	temp = h->next;
 
 	h->next = h->next->next;
 	temp->next = h;

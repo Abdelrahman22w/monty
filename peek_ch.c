@@ -17,19 +17,19 @@ void peek_ch(stack_t **head, unsigned int counter)
 		goto cleanup;
 		return;
 	}
-    if (isascii((*head)->n))
-    {
-        printf("%c\n", (*head)->n);
-        return;
-    }
-    else
-    {
-        fprintf(stderr, "L%u: can't pchar, value out of range\n", counter);
-        goto cleanup;
-        return;
-    }
+	if ((*head)->n >= 0 && (*head)->n <= 127)
+	{
+		printf("%c\n", (*head)->n);
+		return;
+	}
+	else
+	{
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", counter);
+		goto cleanup;
+		return;
+	}
 
-	cleanup:
+cleanup:
 	fclose(bus.file);
 	free(bus.content);
 	free_stack(*head);

@@ -8,6 +8,7 @@
 void check_push(stack_t **head, unsigned int counter)
 {
 	int n;
+	int j = 0;
 	char *arg = bus.arg; /* Storing the argument in a local variable */
 
 	if (!arg || *arg == '\0')
@@ -15,7 +16,6 @@ void check_push(stack_t **head, unsigned int counter)
 		fprintf(stderr, "L%d: usage: push integer\n", counter);
 		goto cleanup; /*to close, free the file and the stack then exit the file */
 	}
-	int j = 0;
 
 	if (arg[j] == '-')
 	{
@@ -50,12 +50,14 @@ cleanup: /* close and free file and free the stack to avoid memory leaking */
 /**
  * pall - print the elements in the stack
  * @head: double pointer to the head of the stack
+ * @counter: counts the lines
  * Return: Nothing
 */
 
-void pall(stack_t **head)
+void pall(stack_t **head, unsigned int counter)
 {
 	stack_t *current_node = *head;
+	(void)counter;
 
 	if (current_node == NULL)
 	{

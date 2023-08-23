@@ -7,16 +7,14 @@
 */
 void pop(stack_t **head, unsigned int counter)
 {
+	stack_t *top_node = *head;
+	*head = top_node->next;
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
 		goto cleanup;
 		return;
 	}
-
-	stack_t *top_node = *head;
-
-	*head = top_node->next;
 	free(top_node);
 
 cleanup:

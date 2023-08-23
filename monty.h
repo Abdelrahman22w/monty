@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
+#define MAX_LINE_LENGTH 1024
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -55,10 +56,24 @@ typedef struct instruction_s
 } instruction_t;
 				/* functions declaration */
 void check_push(stack_t **head, unsigned int counter);
-void pall(stack_t **head);
+void pall(stack_t **head, unsigned int counter);
 void pint(stack_t **head, unsigned int counter);
 void swap(stack_t **head, unsigned int counter);
 void pop(stack_t **head, unsigned int counter);
 void add(stack_t **head, unsigned int counter);
 void nop(stack_t **head, unsigned int counter);
+void sub(stack_t **head, unsigned int counter);
+void peek_ch(stack_t **head, unsigned int counter);
+void peek_str(stack_t **head, unsigned int counter);
+void rotl(stack_t **head, unsigned int counter);
+void rotr(stack_t **head, unsigned int counter);
+void f_stack(stack_t **head, unsigned int counter);
+void queue(stack_t **head, unsigned int counter);
+void addqueue(stack_t **head, int n);
+void mod(stack_t **head, unsigned int counter);
+void mul(stack_t **head, unsigned int counter);
+void f_div(stack_t **head, unsigned int counter);
+void free_stack(stack_t *head);
+int exec(char *content, stack_t **stack, unsigned int counter, FILE *file);
+void addnode(stack_t **head, int n);
 #endif
