@@ -8,25 +8,27 @@
  */
 void rotr(stack_t **head, unsigned int counter)
 {
-    stack_t *current = *head;
-    stack_t *last = NULL;
-    (void)counter;
+	stack_t *current = *head;
+	stack_t *last = NULL;
 
-    if (!head || !*head || !(*head)->next)
-        return;
+	(void)counter;
 
-    /*Find the last element*/
-    while (current->next)
-        current = current->next;
+	if (!head || !*head || !(*head)->next)
+		return;
 
-    last = current;
+	/*Find the last element*/
+	while (current->next)
+		current = current->next;
 
-   
-    while (last != *head) 
-    {
-        int temp = last->n;
-        last->n = last->prev->n;
-        last->prev->n = temp;
-        last = last->prev;
-    }
+	last = current;
+
+
+	while (last != *head)
+	{
+		int temp = last->n;
+
+		last->n = last->prev->n;
+		last->prev->n = temp;
+		last = last->prev;
+	}
 }

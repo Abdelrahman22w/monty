@@ -23,7 +23,7 @@ void sub(stack_t **head, unsigned int counter)
 	pop(head, counter);
 
 	/*-------------------------------------*/
-	cleanup:
+cleanup:
 	fclose(bus.file);
 	free(bus.content);
 	free_stack(*head);

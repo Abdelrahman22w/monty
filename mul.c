@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * mul - sub top element from its prev
+ * mul - mul top element from its prev
  *
  * @head: stack header
  * @counter: node counter
@@ -23,7 +23,7 @@ void mul(stack_t **head, unsigned int counter)
 	pop(head, counter);
 
 	/*-------------------------------------*/
-	cleanup:
+cleanup:
 	fclose(bus.file);
 	free(bus.content);
 	free_stack(*head);

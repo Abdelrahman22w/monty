@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * mul - sub top element from its prev
+ * mod - mod top element from its prev
  *
  * @head: stack header
  * @counter: node counter
@@ -9,7 +9,7 @@
  * Return: no
 */
 
-void div(stack_t **head, unsigned int counter)
+void mod(stack_t **head, unsigned int counter)
 {
 	if (*head == NULL || (*head)->next == NULL)
 	{
@@ -17,20 +17,20 @@ void div(stack_t **head, unsigned int counter)
 		goto cleanup;
 		return;
 	}
-    else if ((*head)->n == 0)
-    {
-        fprintf(stderr, "L%d: division by zero\n", counter);
+	else if ((*head)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", counter);
 		goto cleanup;
 		return;
-    }
-    
+	}
+
 	/*--------------------------------------*/
 
 	(*head)->next->n %= (*head)->n;
 	pop(head, counter);
 
 	/*-------------------------------------*/
-	cleanup:
+cleanup:
 	fclose(bus.file);
 	free(bus.content);
 	free_stack(*head);
