@@ -7,26 +7,23 @@
 */
 void check_push(stack_t **head, unsigned int counter)
 {
-	int n;
-	int j = 0;
-	char *arg = bus.arg; /* Storing the argument in a local variable */
+	int value, index = 0, invalid_input = 0;
+	char *input = bus.arg;
 
-	if (!arg || *arg == '\0')
-	{ /* check if the arg equals NUll*/
-		fprintf(stderr, "L%d: usage: push integer\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE);
-	}
-
-	if (arg[j] == '-')
+	if (input)
 	{
-		j++; /* Skip the negative sign */
-	}
-	while (arg[j] != '\0')
-	{
-		if (arg[j] < '0' || arg[j] > '9')
+		if (input[index] == '-')
+			index++;
+		while (input[index] != '\0')
+		{
+			if (input[index] < '0' || input[index] > '9')
+			{
+				invalid_input = 1;
+				break;
+			}
+			index++;
+		}
+		if (invalid_input)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", counter);
 			fclose(bus.file);
@@ -34,20 +31,23 @@ void check_push(stack_t **head, unsigned int counter)
 			free_stack(*head);
 			exit(EXIT_FAILURE);
 		}
-		j++;
-	}
-	n = atoi(arg);
-
-	if (bus.lifi == 0)
-	{
-		addnode(head, n);
 	}
 	else
 	{
-		addqueue(head, n);
+		fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
 	}
 
+	value = atoi(input);
+	if (bus.lifi == 0)
+		addnode(head, value);
+	else
+		addqueue(head, value);
 }
+
 /**
  * pall - print the elements in the stack
  * @head: double pointer to the head of the stack
