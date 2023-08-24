@@ -14,7 +14,10 @@ void sub(stack_t **head, unsigned int counter)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
-		goto cleanup;
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
 		return;
 	}
 	/*--------------------------------------*/
@@ -23,9 +26,5 @@ void sub(stack_t **head, unsigned int counter)
 	pop(head, counter);
 
 	/*-------------------------------------*/
-cleanup:
-	fclose(bus.file);
-	free(bus.content);
-	free_stack(*head);
-	exit(EXIT_FAILURE);
+
 }
