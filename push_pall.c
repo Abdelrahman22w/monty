@@ -14,7 +14,10 @@ void check_push(stack_t **head, unsigned int counter)
 	if (!arg || *arg == '\0')
 	{ /* check if the arg equals NUll*/
 		fprintf(stderr, "L%d: usage: push integer\n", counter);
-		goto cleanup; /*to close, free the file and the stack then exit the file */
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
 	}
 
 	if (arg[j] == '-')
@@ -26,7 +29,10 @@ void check_push(stack_t **head, unsigned int counter)
 		if (arg[j] < '0' || arg[j] > '9')
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", counter);
-			goto cleanup;
+			fclose(bus.file);
+			free(bus.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE);
 		}
 		j++;
 	}
@@ -40,12 +46,7 @@ void check_push(stack_t **head, unsigned int counter)
 	{
 		addqueue(head, n);
 	}
-	return;
-cleanup: /* close and free file and free the stack to avoid memory leaking */
-	fclose(bus.file);
-	free(bus.content);
-	free_stack(*head);
-	exit(EXIT_FAILURE);
+
 }
 /**
  * pall - print the elements in the stack

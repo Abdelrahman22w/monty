@@ -21,7 +21,10 @@ void swap(stack_t **head, unsigned int counter)
 	if (len < 2)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", counter);
-		goto cleanup;
+		fclose(bus.file);
+		free(bus.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE);
 	}
 	/* swaps the top two elements of the stack */
 	h = *head;
@@ -35,9 +38,4 @@ void swap(stack_t **head, unsigned int counter)
 
 	return;
 
-cleanup:
-	fclose(bus.file);
-	free(bus.content);
-	free_stack(*head);
-	exit(EXIT_FAILURE);
 }
