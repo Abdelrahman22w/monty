@@ -1,27 +1,24 @@
 #include "monty.h"
 
 /**
- * peek_str - see top str
+ * pstr - see top str
  * @head: pt
  * @counter: cnt
 */
 void peek_str(stack_t **head, unsigned int counter)
 {
-	stack_t *top = *head;
+    stack_t *h;
+	(void)counter;
 
-	(void) counter;
-	if (head == NULL || *head == NULL)
+	h = *head;
+	while (h)
 	{
-		putchar('\n');
-		return;
-	}
-
-	for (; top != NULL; top = top->next)
-	{
-		if (top->n > 127 || top->n <= 0)
+		if (h->n > 127 || h->n <= 0)
 		{
-			putchar((char)top->n);
+			break;
 		}
+		printf("%c", h->n);
+		h = h->next;
 	}
-	putchar('\n');
+	printf("\n");
 }
