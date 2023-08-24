@@ -19,5 +19,9 @@ void pop(stack_t **head, unsigned int counter)
 	}
 	top_node = *head;
 	*head = top_node->next;
+	if (*head)
+	{
+		(*head)->prev = NULL;
+	}
 	free(top_node);
 }
