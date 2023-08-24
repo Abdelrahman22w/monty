@@ -8,6 +8,7 @@
 
 void pint(stack_t **head, unsigned int counter)
 {
+	int top_value = (*head)->n;
 
 	if (*head == NULL)
 	{
@@ -18,6 +19,6 @@ void pint(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n", (*head)->n); /* prints the top element */
+	printf("%d\n", top_value); /* prints the top element */
 
 }
