@@ -10,9 +10,6 @@
  */
 void f_div(stack_t **head, unsigned int counter)
 {
-	stack_t *temp;
-	int sum;
-
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
@@ -32,9 +29,7 @@ void f_div(stack_t **head, unsigned int counter)
 
 	/*--------------------------------------*/
 
-	sum = temp->next->n / temp->n;
-	temp->next->n = sum;
-	*head = temp->next;
-	free(temp);
+	(*head)->next->n /= (*head)->n;
+	pop(head, counter);
 
 }
