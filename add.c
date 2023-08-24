@@ -25,7 +25,8 @@ void add(stack_t **head, unsigned int counter)
 
 	(*head)->next->n = sum;
 	(*head)->next = temp->next;
-
+	if (temp->next)
+		temp->next->prev = *head;
 	free(temp);
 
 }
