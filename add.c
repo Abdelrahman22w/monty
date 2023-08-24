@@ -1,4 +1,5 @@
 #include "monty.h"
+
 /**
  * add - adds the sum of the last two elements and store in second top element
  * @head: double pointer to the head of the stack
@@ -13,10 +14,8 @@ void add(stack_t **head, unsigned int counter)
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE);
+		goto cleanup;
+		return;
 	}
 	sum = (*head)->n + (*head)->next->n;
 	temp = (*head)->next;
@@ -26,4 +25,9 @@ void add(stack_t **head, unsigned int counter)
 
 	free(temp);
 
+cleanup:
+	fclose(bus.file);
+	free(bus.content);
+	free_stack(*head);
+	exit(EXIT_FAILURE);
 }
