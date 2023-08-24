@@ -18,11 +18,10 @@ void sub(stack_t **head, unsigned int counter)
 		free(bus.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
-		return;
 	}
 	/*--------------------------------------*/
 
-	(*head)->next->n -= (*head)->n;
+	(*head)->next->n = (*head)->n;
 	pop(head, counter);
 
 	/*-------------------------------------*/
