@@ -31,4 +31,6 @@ void rotr(stack_t **head, unsigned int counter)
 		last->prev->n = temp;
 		last = last->prev;
 	}
+	free(current);
+	free(last);
 }

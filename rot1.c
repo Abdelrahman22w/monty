@@ -23,4 +23,5 @@ void rotl(stack_t **head, unsigned int counter)
 		current->next->n = temp;
 		current = current->next;
 	}
+	free(current);
 }

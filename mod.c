@@ -13,7 +13,7 @@ void mod(stack_t **head, unsigned int counter)
 {
 	if (*head == NULL || (*head)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", counter);
 		fclose(bus.file);
 		free(bus.content);
 		free_stack(*head);

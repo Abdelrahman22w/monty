@@ -21,4 +21,5 @@ void peek_str(stack_t **head, unsigned int counter)
 		h = h->next;
 	}
 	printf("\n");
+	free(h);
 }
