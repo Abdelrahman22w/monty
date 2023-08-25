@@ -29,7 +29,13 @@ void f_div(stack_t **head, unsigned int counter)
 
 	/*--------------------------------------*/
 
-	(*head)->next->n /= (*head)->n;
-	pop(head, counter);
+    /* Perform floating-point division */
+    double result = (double)(*head)->next->n / (*head)->n;
+    
+    /* Pop the top element */
+    pop(head, counter);
+
+    /* Push the result back onto the stack */
+    push(head, result);
 
 }
